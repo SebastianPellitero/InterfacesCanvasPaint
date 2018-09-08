@@ -75,4 +75,5 @@ aside {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    background-color: gainsboro;
 }

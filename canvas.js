@@ -61,13 +61,10 @@ var clearButton = document.getElementById("clear");
 clearButton.addEventListener('click', clearArea);
 
 function clearArea() {
-    // Use the identity matrix while clearing the canvas
     context.setTransform(1, 0, 0, 1, 0, 0);
     context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 }
 
-/*****************************/
-/*IMAGES*/
 
 var imageLoader = document.getElementById('imageLoader');
 imageLoader.addEventListener('change', loadImageonPage, false);
@@ -88,19 +85,7 @@ function loadImageonPage(e) {
 
 
 /*****************************/
-/*FILTERS*/
-var negativeFilter = document.getElementById('negative');
-negativeFilter.addEventListener('click', function(){ invert(context)});
-
-var brightFilter = document.getElementById('brillo');
-brightFilter.addEventListener('click', function(){ brighter(context)});
-
-
-var binarizFilter = document.getElementById('blackwhite');
-binarizFilter.addEventListener('click', function(){ blackandwhite(context)});
-
-var sepiaFilter = document.getElementById('sepia');
-sepiaFilter.addEventListener('click', function(){ sepiascale(context)});
+/* Filtro por pixel */
 
 function invert(ctx) {
     var imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
@@ -144,15 +129,34 @@ function sepiascale(ctx) {
     context.putImageData(imageData, 0, 0);
 };
 
-var saturateFilter = document.getElementById('saturation');
-saturateFilter.addEventListener('click', function(){ saturate(context)}); 
+function grayscale(ctx) {
+    var imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
+    var data = imageData.data;
+    for (var i = 0; i < data.length; i += 4) {
+      var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+      data[i]     = avg; // red
+      data[i + 1] = avg; // green
+      data[i + 2] = avg; // blue
+    }
+    context.putImageData(imageData, 0, 0);
+};
 
-var blurFilter = document.getElementById('blur');
-blurFilter.addEventListener('click', function(){ blur(context)}); 
+var negativeFilter = document.getElementById('negative');
+negativeFilter.addEventListener('click', function(){ invert(context)});
 
-var borderFilter = document.getElementById('bordes');
-borderFilter.addEventListener('click', function(){ border(context)});
+var brightFilter = document.getElementById('brillo');
+brightFilter.addEventListener('click', function(){ brighter(context)});
 
+var binarizFilter = document.getElementById('blackwhite');
+binarizFilter.addEventListener('click', function(){ blackandwhite(context)});
+
+var sepiaFilter = document.getElementById('sepia');
+sepiaFilter.addEventListener('click', function(){ sepiascale(context)});
+
+var grayFilter = document.getElementById('gray');
+grayFilter.addEventListener('click', function(){ grayscale(context)});
+
+/* filtro por imagen*/
 
 function saturate(ctx) {
     var imageData = ctx.getImageData(0,0, canvas.width, canvas.height);
@@ -227,8 +231,15 @@ function border(ctx) {
                              0, -1,  0]); 
 }
 
-/*****************************/
-/*Save*/
+var saturateFilter = document.getElementById('saturation');
+saturateFilter.addEventListener('click', function(){ saturate(context)}); 
+
+var blurFilter = document.getElementById('blur');
+blurFilter.addEventListener('click', function(){ blur(context)}); 
+
+var borderFilter = document.getElementById('bordes');
+borderFilter.addEventListener('click', function(){ border(context)});
+
 var save = document.getElementById('save');
 
 save.addEventListener('click', function(e) {

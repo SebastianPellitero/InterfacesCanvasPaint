@@ -18,43 +18,46 @@
 				<select id="selWidth">
 					<option value="1">1</option>
 					<option value="5">5</option>
-					<option value="10">10</option>
+					<option value="10" selected="selected">10</option>
 					<option value="15">15</option>
-					<option value="20" selected="selected">20</option>
+					<option value="20">20</option>
 					<option value="40">40</option>
 				</select>
 			</div>
 			<div>
 				<label for="selColor">Color :</label>
 				<select id="selColor">
-					<option value="black">black</option>
-					<option value="blue" selected="selected">blue</option>
-					<option value="red">red</option>
-					<option value="green">green</option>
-					<option value="yellow">yellow</option>
-					<option value="gray">gray</option>
+					<option style="background-color: black" value="black">black</option>
+					<option style="background-color: blue" value="blue" selected="selected">blue</option>
+					<option style="background-color: red" value="red">red</option>
+					<option style="background-color: green" value="green">green</option>
+					<option style="background-color: yellow" value="yellow">yellow</option>
+					<option style="background-color: gray" value="gray">gray</option>
 				</select>
 			</div>
             <div>
-                <label for="imageLoader">Load Imgen:</label>
+                <label for="imageLoader">Load Image:</label>
                 <input type="file" id="imageLoader" name="imageLoader"/>
             </div>
 		    <a href="" id="save">Download image</a>
-	    </div>	    
-        <canvas id="myCanvas" width="1500" height="400"></canvas>
+		</div>	   
+		<div> 
+			<canvas id="myCanvas" width="1500" height="400"></canvas>
+		</div>
         <aside>
             <div>
                 <h4>Filtros por pixel</h4>
-                <button id="negative" href="#">Negative</button>
-                <button id="brillo" href="#">Brighter</button>
-                <button id="blackwhite" href="#">Black&white</button>
-                <button id="sepia" href="#">Sepia</button>
+                <button id="negative">Negative</button>
+                <button id="brillo">Brighter</button>
+                <button id="blackwhite">Black&white</button>
+				<button id="sepia">Sepia</button>
+				<button id="gray">Gray</button>
             </div>
             <div>   
                 <h4>Filtro por imagen</h4>
-                <button id="saturation" href="#">Saturation</button>
-                <button id="blur" href="#">Blur</button>
-                <button id="bordes" href="#">Edge detection</button>
+                <button id="saturation">Saturation</button>
+                <button id="blur">Blur</button>
+                <button id="bordes">Edge detection</button>
             </div>
 	    </aside>
 	</article>
