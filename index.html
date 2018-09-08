@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>My paint</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<article>
+		<div class="tool-bar">
+            <div>
+                <span><img class="tool-icon" id="pencil" src="images/pencil.png"></span>
+                <span><img class="tool-icon" id="eraser" src="images/eraser.png"></span>
+		    </div>
+			<button id="clear">Clear Area</button>
+            <div>
+				<label for="selWidth">Line width :</label> 
+				<select id="selWidth">
+					<option value="1">1</option>
+					<option value="5">5</option>
+					<option value="10">10</option>
+					<option value="15">15</option>
+					<option value="20" selected="selected">20</option>
+					<option value="40">40</option>
+				</select>
+			</div>
+			<div>
+				<label for="selColor">Color :</label>
+				<select id="selColor">
+					<option value="black">black</option>
+					<option value="blue" selected="selected">blue</option>
+					<option value="red">red</option>
+					<option value="green">green</option>
+					<option value="yellow">yellow</option>
+					<option value="gray">gray</option>
+				</select>
+			</div>
+            <div>
+                <label for="imageLoader">Load Imgen:</label>
+                <input type="file" id="imageLoader" name="imageLoader"/>
+            </div>
+		    <a href="" id="save">Download image</a>
+	    </div>	    
+        <canvas id="myCanvas" width="1500" height="400"></canvas>
+        <aside>
+            <div>
+                <h4>Filtros por pixel</h4>
+                <button id="negative" href="#">Negative</button>
+                <button id="brillo" href="#">Brighter</button>
+                <button id="blackwhite" href="#">Black&white</button>
+                <button id="sepia" href="#">Sepia</button>
+            </div>
+            <div>   
+                <h4>Filtro por imagen</h4>
+                <button id="saturation" href="#">Saturation</button>
+                <button id="blur" href="#">Blur</button>
+                <button id="bordes" href="#">Edge detection</button>
+            </div>
+	    </aside>
+	</article>
+	<script src="canvas.js"></script>
+</body>
+</html>
